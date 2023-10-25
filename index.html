@@ -135,7 +135,8 @@
             <img src="./static/images/fig.png" alt="" style="width:35%;height:35%;" class="center">
             <figcaption style="font-size: small;">Image credit: <a href="https://www.bing.com/create">Bing Image Creator</a></figcaption>
             <!-- <figcaption style="font-size: small;">Image credit: <a href="https://www.bing.com/create">Bing Image Creator</a> and <a href="https://en.wikipedia.org/wiki/To_be,_or_not_to_be">Shakespeare's Hamlet</a></figcaption> -->
-          </figure>          </div>
+          </figure>          
+        </div>
           <!--Centered Image End-->
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -170,7 +171,7 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/mireshghallah/confAIde"
+                <a href="https://github.com/skywalker023/confAIde"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -180,7 +181,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/mireshghallah/confAIde"
+                <a href="https://github.com/skywalker023/confAIde/benchmark"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -280,15 +281,87 @@
         <h2 class="title is-3" style="color: white;">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Existing efforts on quantifying and auditing large language models for privacy implications solely focus on scrutinizing and measuring leakage of pre-training data and mitigating it through scrubbing personally identifiable information or relying on differential privacy. In this work, we draw attention to the highly critical yet overlooked notion of contextual privacy, which is more relevant than ever as large language models are rapidly deployed in interactive applications such as auto-reply systems and meeting assistants, where the legitimacy of sharing information relies heavily on the context. As such, we propose <em style="font-family:Courier new; ">ConfAIde</em>, a benchmark designed to identify critical weaknesses in the privacy reasoning capabilities of instruction-tuned LLMs. Our experiments show that even commercial models such as GPT-4 and ChatGPT leak private information in inappropriate contexts 50% and 90% of the time, respectively, highlighting the need for a new direction of privacy-preserving approaches.
+            The interactive use of large language models (LLMs) in AI assistants (at work, home, etc.) introduces a new set of inference-time privacy risks: LLMs are fed different types of information from multiple sources in their inputs and we expect them to reason about what to share in their outputs, for what purpose and with whom, in a given context. In this work, we draw attention to the highly critical yet overlooked notion of contextual privacy by proposing <em style="font-family:Courier new; ">ConfAIde</em>, a benchmark designed to identify critical weaknesses in the privacy reasoning capabilities of instruction-tuned LLMs. Our experiments show that even the most capable models such as GPT-4 and ChatGPT reveal private information in contexts that humans would not, 39% and 57% of the time, respectively. This leakage persists even when we employ privacy-inducing prompts or chain-of-thought reasoning. Our work underscores the immediate need to explore novel inference-time privacy-preserving approaches, based on reasoning and theory of mind.
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
+  </div>
+</section>
 
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Tier Structure. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="color: white;">Tiered Benchmark Structure</h2>
+          <!--Centered Image Start-->
+          <div style="text-align: center;">
+            <img src="./static/images/fig-website-tiers.pdf" alt="" style="width:100%;height:100%;" class="center">
+            <figcaption style="font-size: small;">Tiered structure of our <em style="font-family:Courier new; ">ConfAIde</em> benchmark.</figcaption>
+          </figure>          
+        </div>
+          <!--Centered Image End-->
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Tier Structure. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="color: white;">Result Highlights</h2>
+          <!--Centered Image Start-->
+          <div style="text-align: center;">
+            <img src="./static/images/website-heatmap1.pdf" alt="" style="width:100%;height:100%;" class="center">
+            <figcaption style="font-size: small;">Breakdown of GPT-4 judgment over contextual factors, as we progress through tiers 1, 2.a and 2.b.</figcaption>
+          </figure>          
+        </div>
+          <!--Centered Image End-->
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Results. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Next. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="color: white;">So What's Next?</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Need for inference-time privacy definitions:</b> Our findings  point to an existing gap in the literature, regarding privacy definitions at inference time, which can have serious consequences. For instance a recent prompt-injection attack reverse-engineered Bing Chat's initial prompt, which is a list of statements that governs how it interacts with people who use the service.  We aim to draw attention to the necessary changes in the model deployment and use pipeline, emphasizing how this new interactive application of models introduces new privacy challenges, and we only scratch the surface of possible inference time privacy concerns. There is still a plethora of risks unexplored, such as possible leakage of in-context examples to the output, and also the contention between different data modalities in the newly ubiquitous multi-modal models
+          </p>
+        <p>
+          <b>Need for Fundamental solutions:</b>  We show that effectively addressing the issues we raise is difficult, and ad hoc safeguards (\eg privacy-inducing prompts, chain-of-thought reasoning and output filters) are insufficient to solve the core issue of contextual privacy reasoning. Prior work on limiting bias and hallucinations in LLMs have also demonstrated that patching solutions and safegaurds can be easily bypassed with malicious inputs and that there is need for fundamental and principled inference-time approaches, such as  using explicit symbolic graphical representation of each character's beliefs, to enhance the decision making process considering privacy and information flow.
+        </p>
+        <p>
+          <b>Secret revealing and moral incentives:</b> While our benchmark probes models for their privacy reasoning capabilities through the theory of contextual integrity, we do not intend to be the arbiter of privacy, nor do we aim to make normative judgments on what should and should not be revealed, as such judgments can be deeply intertwined with the moral and cultural aspects of an interaction. Social psychologits have studied the moral incentives behind why people might reveal each other's secrets, as a form of punishment, and we encourage future work to further study such incentives in language models more extensively.
+        </p>
+        </div>
+      </div>
+    </div>
+    <!-- Next. -->
+  </div>
+</section>
 
     <!-- Concurrent Work. -->
     <!-- <div class="columns is-centered">
