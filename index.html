@@ -297,7 +297,7 @@
     <!-- Tier Structure. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3" style="color: white;">Tiered Benchmark Structure</h2>
+        <h2 class="title is-3" style="color: white;"><em style="font-family:Courier new; ">ConfAIde</em>: Benchmarking Contextual Privacy Reasoning in LLMs</h2>
           <!--Centered Image Start-->
           <div style="text-align: center;">
             <img src="./static/images/fig-website-tiers.pdf" alt="" style="width:100%;height:100%;" class="center">
@@ -307,6 +307,24 @@
           <!--Centered Image End-->
         <div class="content has-text-justified">
           <p>
+          </br>
+            Our benchmark consists of four tiers, each with distinct evaluation tasks.
+          </br>
+          </br>
+          
+            <b>Tier 1 (Info-Sensitivity)</b>:  assesses LLMs on their ability to understand the sensitivity of given information, using ten predefined information types.
+            </br>
+          </br>
+            <b>Tier 2 (InfoFlow-Expectation)</b>:  evaluates models' expectations of information flow using vignettes based on three contextual factors: information type, actor, and use. This tier includes two sub-tiers: Tier 2.a and Tier 2.b, with Tier 2.b expanding vignettes into short stories.
+            </br>
+          </br>
+            <b>Tier 3 (InfoFlow-Control)</b>:  tests the model's ability to control the flow of private information within complex scenarios involving three parties. It requires social reasoning skills, such as theory of mind.
+            </br>
+          </br>
+            <b>Tier 4 (InfoFlow-Application)</b>:  examines privacy reasoning in real-world scenarios, specifically in automatic action-item and summary generation from meeting transcripts.
+            </br>
+          </br>
+            Each tier has a specific design and evaluation focus, ranging from basic information sensitivity to more complex real-world applications.
           </p>
         </div>
       </div>
@@ -330,7 +348,9 @@
         </div>
           <!--Centered Image End-->
         <div class="content has-text-justified">
+        </br>
           <p>
+            <b>Effect of actor and use on privacy expectations (tiers 1-2.b).</b> The figure above shows how GPT-4's judgment varies based on different contextual factors and data sensitivity, progressing through tiers 1, 2.a and 2.b. For example, the sensitivity of sharing Social Security Numbers (SSN) decreases when it's shared with insurance (Tier 2.a) instead of being highly sensitive (Tier 1). The figure also shows that sharing SSN with a doctor becomes less of a privacy concern when moving from Tier 2.a to 2.b with GPT-4. 
           </p>
         </div>
           <!--Centered Image Start-->
@@ -339,9 +359,14 @@
             <figcaption style="font-size: small;">Summary of Tier 3 and Tier 4 leakage percentage results: State of the art models (GPT-4 and ChatGPT) leak secrets at an alarming rate, and using chain of thought reasoning doesn't help!</figcaption>
           </figure>          
         </div>
+      </br>
           <!--Centered Image End-->
         <div class="content has-text-justified">
           <p>
+            <b>High levels of leakage in theory of mind based scenarios.</b> The figures above show the worst case leakage of ChatGPT and GPT-4 on Tiers 3 and 4 scenarios, where we ask the model to finish a story or to summarize a work meeting. We can see that the leakage of both models is alarmingly high, although we are using a privacy-inducing prompt which instructs the model to consider privacy norms before responding.
+          </br>
+        </br>
+          <b>Does CoT reasoning help?</b> To see if patching solutions work we use chain of thought reasoning and ask the model to think step by step. We observe that even CoT doesn't improve leakage, infact it makes it slightly worse, underscoring the need for fundamental solutions!
           </p>
         </div>
       </div>
@@ -359,13 +384,12 @@
         <h2 class="title is-3" style="color: white;">So What's Next?</h2>
         <div class="content has-text-justified">
           <p>
-            <b>Need for inference-time privacy definitions:</b> Our findings  point to an existing gap in the literature, regarding privacy definitions at inference time, which can have serious consequences. For instance a recent prompt-injection attack reverse-engineered Bing Chat's initial prompt, which is a list of statements that governs how it interacts with people who use the service.  We aim to draw attention to the necessary changes in the model deployment and use pipeline, emphasizing how this new interactive application of models introduces new privacy challenges, and we only scratch the surface of possible inference time privacy concerns. There is still a plethora of risks unexplored, such as possible leakage of in-context examples to the output, and also the contention between different data modalities in the newly ubiquitous multi-modal models
-          </p>
-        <p>
-          <b>Need for Fundamental solutions:</b>  We show that effectively addressing the issues we raise is difficult, and ad hoc safeguards (\eg privacy-inducing prompts, chain-of-thought reasoning and output filters) are insufficient to solve the core issue of contextual privacy reasoning. Prior work on limiting bias and hallucinations in LLMs have also demonstrated that patching solutions and safegaurds can be easily bypassed with malicious inputs and that there is need for fundamental and principled inference-time approaches, such as  using explicit symbolic graphical representation of each character's beliefs, to enhance the decision making process considering privacy and information flow.
-        </p>
-        <p>
-          <b>Secret revealing and moral incentives:</b> While our benchmark probes models for their privacy reasoning capabilities through the theory of contextual integrity, we do not intend to be the arbiter of privacy, nor do we aim to make normative judgments on what should and should not be revealed, as such judgments can be deeply intertwined with the moral and cultural aspects of an interaction. Social psychologits have studied the moral incentives behind why people might reveal each other's secrets, as a form of punishment, and we encourage future work to further study such incentives in language models more extensively.
+          </br>
+            <b>Inference-Time Privacy Definitions:</b> Current research highlights a crucial gap in privacy definitions during the inference phase, which has significant implications. For instance, a recent attack exposed vulnerabilities in Bing Chat's initial prompt, affecting its interactions with users. We emphasize the need to address changes in model deployment and usage, particularly in interactive applications, and acknowledge the existence of various unexplored privacy concerns. These include the potential leakage of in-context examples to the model's output and conflicts between different data types in multi-modal models.
+          </br> </br>
+            <b>Fundamental Privacy Solutions:</b> We demonstrate the complexity of addressing these issues and argue that ad hoc solutions like privacy-inducing prompts and output filters are insufficient for addressing the core challenge of contextual privacy reasoning. Prior efforts to mitigate biases and hallucinations in language models have shown that such safeguards can be easily bypassed by malicious inputs. To address these concerns, we advocate for fundamental and principled inference-time approaches, such as utilizing explicit symbolic graphical representations of individuals' beliefs to enhance decision-making while considering privacy and information flow.
+          </br> </br>
+            <b>Secret Disclosure and Moral Incentives:</b> While our benchmark assesses models for their privacy reasoning abilities based on the theory of contextual integrity, we do not aim to dictate privacy standards or make normative judgments, as these judgments are intertwined with moral and cultural factors in interactions. Social psychologists have studied the moral incentives behind disclosing others' secrets as a form of punishment. We encourage further research into these incentives within language models.
         </p>
         </div>
       </div>
